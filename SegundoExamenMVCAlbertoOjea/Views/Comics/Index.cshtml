@@ -1,0 +1,32 @@
+﻿@model List<Comic>
+<h1 style="color:blue">Comics SQL y ORACLE</h1>
+<p>
+    <a asp-controller="Comics" asp-action="Create" class="btn btn-outline-warning">
+        Crear Comic
+    </a>
+
+    <a asp-controller="Comics" asp-action="CreateProcedure" class="btn btn-outline-secondary">
+        Crear Comic (PROCEDURE)
+    </a>
+
+    <a asp-controller="Comics" asp-action="BuscarComic" class="btn btn-outline-dark">
+        Buscar Comic
+    </a>
+</p>
+
+<div class="row row-cols-1 row-cols-md-5 g-4">
+    @foreach (Comic cm in Model)
+    {
+        <div class="col">
+            <div class="card">
+                <img src="@cm.Imagen" class="card-img-top" style="height:200px">
+                <div class="card-body">
+                    <h5 class="card-title">@cm.Nombre</h5>
+                    <p class="card-text">Descripcion: @cm.Descripcion</p>
+                    @*<p class="card-text">ID: @cm.idComic</p>*@
+                    <a asp-controller="Comics" asp-action="Delete" asp-route-id="@cm.idComic" class="btn btn-outline-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

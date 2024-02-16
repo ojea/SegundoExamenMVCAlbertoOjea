@@ -1,0 +1,41 @@
+﻿@model Comic;
+
+<p> <a asp-controller="Comics" asp-action="Index" class="btn btn-outline-dark">Back to Comics</a></p>
+
+@{
+    List<Comic> comics = (List<Comic>)ViewData["Comics"];
+}
+
+<h1>Buscador de comics</h1>
+<div class="container p-3">
+    <form method="post" class="row">
+        <div class="col-md-9">
+            <select class="form-control" name="idcomic">
+                @foreach(Comic cm in comics)
+                {
+                    <option value="@cm.idComic">@cm.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-outline-info">Buscar comic</button>
+        </div>
+    </form>
+</div>
+@if (Model != null)
+{
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        
+            <div class="col">
+                <div class="card">
+                    <img src="@Model.Imagen" class="card-img-top" style="height:200px">
+                    <div class="card-body">
+                        <h5 class="card-title">@Model.Nombre</h5>
+                        @*<p class="card-text">ID: @Model.idComic</p>*@
+                        <p class="card-text">Descripción: @Model.Descripcion</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+}
+

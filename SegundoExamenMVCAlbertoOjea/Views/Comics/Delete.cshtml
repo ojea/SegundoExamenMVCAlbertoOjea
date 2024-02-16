@@ -1,0 +1,14 @@
+﻿@model Comic
+
+<h1>Eliminar comic</h1>
+<p> <a asp-controller="Comics" asp-action="Index" class="btn btn-outline-dark">Back to Comics</a></p>
+<h2">@ViewData["MENSAJE"]</h2>
+@if (Model != null)
+{
+   <form method="post">
+       <h2 class="text-center">¿Seguro que queres eliminar el comic @Model.Nombre ?</h2>
+       <div class="col-6">
+           <button class="btn btn-outline-danger " name="id" value="@Model.idComic">Si, eliminar</button>
+       </div>
+   </form>
+}
